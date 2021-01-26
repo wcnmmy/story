@@ -1,0 +1,23 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /tp
+spring:
+  datasource:
+    # 添加zeroDateTimeBehavior=convertToNull 目的是让数据库中的zeroDate(形如0000-00-00 00:00:00)自动转换为null
+    url: jdbc:mysql://localhost:3306/tpvillage?characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      username: root
+      password:
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.tpvillage.story.entity
+  logging:
+    level:
+      xyz.tpvillage.mapper: debug
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  file:
+    name: log/story.log
