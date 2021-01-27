@@ -14,7 +14,7 @@ public class StoryApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(StoryApplication.class, args);
-        log.info("tpvillage快速链接：http://localhost:9090/tp/swagger-ui.html");
+        log.info("tpvillage Swagger直达：http://localhost:9090/tp/swagger-ui.html");
     }
 
 }
