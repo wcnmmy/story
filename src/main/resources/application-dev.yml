@@ -5,7 +5,7 @@ server:
 spring:
   datasource:
     # 添加zeroDateTimeBehavior=convertToNull 目的是让数据库中的zeroDate(形如0000-00-00 00:00:00)自动转换为null
-    url: jdbc:mysql://localhost:3306/tpvillage?characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://localhost:3306/story?characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       username: root

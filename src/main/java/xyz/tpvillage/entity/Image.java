@@ -1,15 +1,14 @@
 package xyz.tpvillage.entity;
 
+import java.time.LocalDateTime;
 import java.io.Serializable;
-
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 故事主表
+ * 图片主表
  * </p>
  *
  * @author mybatis-plus-generator
@@ -18,56 +17,59 @@ import lombok.experimental.Accessors;
 @Data
   @EqualsAndHashCode(callSuper = false)
   @Accessors(chain = true)
-public class Story implements Serializable {
+public class Image implements Serializable {
 
     private static final long serialVersionUID=1L;
 
       /**
-     * 故事编号
+     * 图片编号
      */
         private String id;
 
       /**
-     * 故事名称
+     * 图片名称
      */
-      @TableField("`name`")
       private String name;
 
       /**
-     * 头像
+     * 图片地址
      */
-      private String icon;
+      private String url;
 
       /**
-     * 座右铭
+     * 图片宽度
      */
-      private String motto;
+      private Integer width;
 
       /**
-     * 梦想
+     * 图片高度
      */
-      private String dream;
+      private Integer height;
 
       /**
-     * 爱好
+     * 文件大小
      */
-      private String hobby;
+      private Long size;
 
       /**
-     * 崇拜的人
+     * 图片创建时间
      */
-      private String idolize;
+      private LocalDateTime create;
 
       /**
-     * 名字拼音
+     * 图片类型，与图片类型表相关联
      */
-      private String pinyin;
+      private String type;
 
       /**
-     * 主页
+     * 查看次数
      */
-      @TableField("`index`")
-      private String index;
+      private Integer see;
+
+      /**
+     * 下载次数
+     */
+      private Integer download;
 
 
 }

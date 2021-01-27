@@ -1,22 +1,20 @@
 package xyz.tpvillage.service.impl;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
 import xyz.tpvillage.entity.Story;
 import xyz.tpvillage.mapper.StoryMapper;
 import xyz.tpvillage.service.StoryService;
-
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
- * @author: 朱兴平
- * @date: 2021/1/24
+ * <p>
+ * 故事主表 服务实现类
+ * </p>
+ *
+ * @author mybatis-plus-generator
+ * @since 2021-01-28
  */
 @Service
 public class StoryServiceImpl extends ServiceImpl<StoryMapper, Story> implements StoryService {
 
-    @Override
-    public List<Story> getList() {
-        return baseMapper.selectList(null);
-    }
 }

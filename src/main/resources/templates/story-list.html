@@ -45,9 +45,9 @@
             </div>
         </div>
         <ul class="tp-list tp-float-container tp-divide4">
-            <li class="tp-box" th:each="story:${storyList}">
+            <li class="tp-box" th:each="story:${storyList}" th:attr="story-id=${story.id}">
                 <div class="story-item">
-                    <img th:src="'http://tpvillage.oss-cn-chengdu.aliyuncs.com/'+${story.headIcon}" alt="">
+                    <img th:src="'http://tpvillage.oss-cn-chengdu.aliyuncs.com/'+${story.icon}" alt="">
                     <div>
                         <div class="title" th:text="${story.name}"></div>
                         <div class="describe" th:text="${story.motto}"></div>
