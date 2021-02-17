@@ -14,11 +14,11 @@ import java.io.InputStream;
  */
 public class OSSUtil {
     // Endpoint以杭州为例，其它Region请按实际情况填写。
-    private static final String ENDPOINT = "https://oss-cn-chengdu.aliyuncs.com";
+    private static final String ENDPOINT = "****************";
     // 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录RAM控制台创建RAM账号。
-    private static final String ACCESS_KEY_ID = "LTAI4G1QEcT17b6c4JfUAjPb";
-    private static final String ACCESS_KEY_SECRET = "Sbeo3in7OMkVcPbtLbBQEyxhBIoEEd";
-    private static final String BUCKET_NAME = "tpvillage";
+    private static final String ACCESS_KEY_ID = "********************";
+    private static final String ACCESS_KEY_SECRET = "******************";
+    private static final String BUCKET_NAME = "************";
 
     /**
      * 上传对象
