@@ -1,15 +1,271 @@
-<!doctype html>
-
-<!--注意：引入thymeleaf的名称空间-->
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <title>梦想三十七号</title>
+    <link rel="shortcut icon" type="favicon.ico" th:href="${static}+'image/icon/dinosaur.png'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" th:href="${static}+'style/tpvillage.css'">
+    <link rel="stylesheet" th:href="${static}+'style/story-item.css'">
+    <link rel="stylesheet" th:href="${static}+'style/video-item.css'">
+    <link rel="stylesheet" th:href="${static}+'style/message-item.css'">
+    <link rel="stylesheet" th:href="${static}+'style/menu-item.css'">
+    <style>
+        .text p{
+            text-indent: 2em;
+        }
+        .tp-form .tp-input-text{
+            width: 400px;
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script th:src="${static}+'js/index.js'"></script>
 </head>
 <body>
-<p th:text="'hello SpringBoot'">hello thymeleaf</p>
+<header class="tp-nav">
+    <div class="tp-nav-logo">
+        <img th:src="${static}+'image/icon/dinosaur.png'" alt="logo" title="logo">
+        <span>梦想三十七号</span>
+    </div>
+    <ul class="tp-nav-menu">
+        <li>
+            <img th:src="${static}+'image/icon/fish.png'" alt="">
+            <span>Fish</span>
+        </li>
+        <li>
+            <img th:src="${static}+'image/icon/panda.png'" alt="">
+            <span>Panda</span>
+        </li>
+        <li>
+            <img th:src="${static}+'image/icon/leaf.png'" alt="">
+            <span>Leaf</span>
+        </li>
+        <li>
+            <img th:src="${static}+'image/icon/plant.png'" alt="">
+            <span>Plant</span>
+        </li>
+    </ul>
+    <ul class="tp-nav-menu tp-float-right">
+        <li>
+            <span class="bi bi-house-fill">tpvillage.xyz</span>
+        </li>
+    </ul>
+</header>
+<section class="tp-section tp-width-1340">
+    <div class="tp-box to-bg-image">
+        <img th:src="${static}+'image/bg/theme-bg-story-index.jpg'" alt="" class="tp-block">
+    </div>
+    <!-- 头部菜单栏 -->
+    <div class="tp-box-row tp-divide3">
+        <div class="tp-box">
+            <div class="menu-item tp-divide4 red">
+                <a href="#" title="我们的故事">
+                    <span class="bi bi-grid-3x3-gap-fill"></span>
+                    <span>故事</span>
+                </a><a href="#" title="图片">
+                <span class="bi bi-image-fill"></span>
+                <span>图片</span>
+            </a><a href="#" title="视频">
+                <span class="bi bi-play-circle-fill"></span>
+                <span>视频</span>
+            </a><a href="#" title="留言">
+                <span class="bi bi-chat-square-text-fill"></span>
+                <span>留言</span>
+            </a>
+            </div>
+        </div>
+        <div class="tp-box">
+            <div class="menu-item tp-divide4 green">
+                <a href="#" title="Bootstrap">
+                    <span class="bi bi-bootstrap-fill"></span>
+                    <span>Bootstrap</span>
+                </a><a href="#" title="github">
+                <span class="bi bi-github"></span>
+                <span>github</span>
+            </a><a href="#" title="google">
+                <span class="bi bi-google"></span>
+                <span>google</span>
+            </a><a href="#" title="凡科快图">
+                <span class="bi bi-globe"></span>
+                <span>fkw.com</span>
+            </a>
+            </div>
+        </div>
+        <div class="tp-box">
+            <div class="menu-item tp-divide4 blue">
+                <a href="#" title="后台管理">
+                    <span class="bi bi-cpu"></span>
+                    <span>后台管理</span>
+                </a><a href="#" title="项目源码">
+                <span class="bi bi-terminal"></span>
+                <span>项目源码</span>
+            </a><a href="#" title="使用说明">
+                <span class="bi bi-question-circle"></span>
+                <span>使用说明</span>
+            </a><a href="#" title="关于本站">
+                <span class="bi bi-info-circle"></span>
+                <span>关于</span>
+            </a>
+            </div>
+        </div>
+    </div>
+    <!-- 这里本来是留言或公告的 -->
+    <div class="tp-box">
+        <div class="tp-box tp-float-container">
+            <div class="tp-box text" style="background-color: #eee;">
+                <h1 class="tp-text-center">为袁绍檄豫州</h1>
+                <h6 class="tp-text-center"><em>陈琳</em></h6>
+                <p>左将军领豫州刺史郡国相守：盖闻明主图危以制变，忠臣虑难以立权。是以有非常之人，然后有非常之事，有非常之事，然后立非常之功。夫非常者，故非常人所拟也。曩者强秦弱主，赵高执柄，专制朝权，威福由己，时人迫胁，莫敢正言，终有望夷之败，祖宗焚灭，污辱至今，永为世鉴。及臻吕后季年，产、禄专政，内兼二军，外统梁、赵，擅断万机，决事省禁，下凌上替，海内寒心。于是绛侯、朱虚兴兵奋怒，诛夷逆暴，尊立太宗，故能王道兴隆，光明显融，此则大臣立权之明表也</p>
+                <p>司空曹操祖父中常侍腾，与左悺、徐璜并作妖孽，饕餮放横，伤化虐民。父嵩，乞丐携养，因脏假位，舆金辇璧，输货权门，窃盗鼎司，倾覆重器。操赘阉遗丑，本无懿德，僄狡锋协，好乱乐祸。幕府董统鹰扬，扫除凶逆。续遇董卓侵官暴国，于是提剑挥鼓，发命东夏。收罗英雄，弃瑕取用，故遂与操同谘合谋，授以裨师，谓其鹰犬之才，爪牙可任。至乃愚佻短略，轻进易退，伤夷折衄，数丧师徒。幕府辄复分兵命锐，修完补辑，表行东郡领兖州刺史，被以虎文，奖中非威柄，冀获秦师一克之报。而操遂承资拔扈，肆行凶忒，割剥元元，残贤害善。故九江太守边让，英才俊伟，天下知名，直言正色，论不阿谄，身首被枭悬之诛，妻孥受灰灭之咎。自是士林愤痛，民怨弥重，一夫奋臂，举州同声，故躬破于徐方，地夺于吕布，彷徨东裔，蹈据无所。幕府惟强干弱枝之义，且不登叛人之党，故复援旌擐甲，席卷起征，金鼓响振，布众奔沮，拯其死亡之患，复其方伯之位，则幕府无德于兖土之民，而有大造于操也。后会鸾驾反旆，群虏寇攻。时冀州方有北鄙之警，匪遑离局，故使从事中郎徐勋就发遣操，使缮修郊庙，翊卫幼主。操便放志，专行胁迁，当御者禁，卑侮王室，败法乱纪，坐领三台，专制朝政，爵赏由心，刑戮在口，所爱光五宗，所恶灭三族，群谈者受显诛，腹议者蒙隐戮，百寮钳口，道路以目，尚书记朝会，公卿充员品而已。故太尉杨彪，典历三司，享国极位，操因缘眦睚，被以非罪，榜楚参并，五毒备至，触情任忒，不顾宪纲。又议郎赵彦，忠谏直言，议有可纳。是以圣朝含听，改容加饰，操欲迷夺时明，杜绝言路，檀收立杀，不俟报闻。又梁孝王，先帝母昆，坟陵尊显，桑梓松柏，犹宜肃恭，而操帅将吏士，亲临发掘，破棺裸尸，掠取金宝，至令圣朝流涕，士民伤怀。操又特置发丘中郎将、摸金校尉，所遇隳突，无骸不露。身处三公之位，而行桀虏之态，污国虐民，毒施人鬼。加其细政苛惨，科防互设，罾缴充蹊，坑阱塞路，举手挂网罗，动足蹈机陷，是以兖、豫有无聊之民，帝都有吁嗟之怨。历观载籍，无道之臣，贪残酷烈，于操为甚。</p>
+                <p>幕府方诘外奸，未及整训，加绪含容，冀可弥缝。而操豺狼野心，潜包祸谋，乃欲摧挠栋梁，孤弱汉室，除灭忠正，专为枭雄。往者伐鼓北征公孙瓒，强寇桀逆，拒围一年。操因其未破，阴交书命，外助王师，内相掩袭，故引兵造河，方舟北济。会其行人发露，瓒亦枭夷，故使锋芒挫缩，厥图不果。尔乃大军过荡西山，屠各左校，皆束手奉质，争为前登，犬羊残丑，消沦山谷。于是操师震慑，晨夜逋遁，屯据敖仓，阻河为固，欲以螗螂之斧，御隆车之隧。幕府奉汉威灵，折冲宇宙，长戟百万，胡骑千群，奋中黄、育、获之士，骋良弓劲弩之势，并州越太行，青州涉济、漯，大军泛黄河而角其前，荆州下宛、叶而掎其后，雷霆虎步，并集虏庭，若举炎火以焫飞蓬，覆沧海以沃熛炭，有何不灭者哉？又操军吏士，其可战者，皆出自幽、冀，或故营部曲，咸怨旷思归，流涕北顾。其馀兖、豫之民，及吕布、张扬之遗众，覆亡迫胁，权时苟从，各被创痍，人为雠敌。若回旆方徂，登高罔而击鼓吹，扬素挥以启降路，必土崩瓦解，不俟血刃。方今汉室陵迟，纲维弛绝，圣朝无一介之辅，股肱无折冲之势，方畿之内，简练之臣皆垂头拓翼，莫所凭恃，虽有忠义之佐，胁于暴虐之臣，焉能展其节？又操持部曲精兵七百，围守宫阙，外托宿卫，内实拘执，惧其篡逆之萌，因斯而作。此乃忠臣肝脑涂地之秋，烈士立功之会，可不勖哉！</p>
+                <p>操又矫命称制，遣使发兵，恐边远州郡过听而给与，强寇弱主违众旅叛，举以丧名，为天下笑，则明哲不敢也。即日幽、并、青、冀四州并进。书到，荆州勒见兵，与建忠将军协同声势，州郡各整戎马，罗落境界，举师扬威，并匡社稷，则非常之功于是乎著。其得操首者，封五行户侯，赏钱五千万。部曲偏裨将校诸吏降者，勿有所问。广宣恩信，班扬符赏，布告天下，咸使知圣朝有拘逼之难，如律令。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 这里是故事列表 -->
+    <div class="tp-box">
+        <div class="tp-box tp-under-br">
+            <span>我们的故事</span>
+            <a href="#" class="tp-float-right">
+                <span>查看更多</span>
+                <span>
+                    <span>共</span>
+                    <span style="color: red;">64</span>
+                    <span>个故事</span>
+                </span>
+            </a>
+        </div>
+        <ul class="tp-list tp-divide4">
+            <li class="tp-box" th:each="story:${storyList}" th:attr="story-id=${story.id}">
+                <a class="story-item" th:title="${story.name}" th:href="${story.index}">
+                    <img th:src="'http://tpvillage.oss-cn-chengdu.aliyuncs.com/story/head-min/'+${story.icon}">
+                    <div>
+                        <p class="title" th:text="${story.name}"></p>
+                        <p class="describe" th:text="${story.motto}"></p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 这里是图片列表 -->
+    <div class="tp-box">
+        <div class="tp-box tp-under-br">
+            <span>图片</span>
+            <a href="#">
+                <span style="color: cornflowerblue;margin-left: 10px;">我有图片，点击添加</span>
+            </a>
+            <a href="#" class="tp-float-right">
+                <span>查看更多</span>
+                <span>
+                    <span>共</span>
+                    <span style="color: red;">895</span>
+                    <span>张图片</span>
+                </span>
+            </a>
+        </div>
+        <ul class="tp-list tp-divide6">
+            <li class="tp-box" th:each="image : ${imageList}" th:attr="image-id=${image.id}">
+                <img th:src="'http://tpvillage.oss-cn-chengdu.aliyuncs.com/story/image-min/'+${image.name}" th:alt="${image.name}">
+            </li>
+        </ul>
+    </div>
+    <!-- 这里是视频列表 -->
+    <div class="tp-box">
+        <div class="tp-box tp-under-br">
+            <span>视频</span>
+            <a href="#" class="tp-float-right">
+                <span>查看更多</span>
+                <span>
+                    <span>共</span>
+                    <span style="color: red;">43</span>
+                    <span>个视频</span>
+                </span>
+            </a>
+        </div>
+        <ul class="tp-list tp-divide4">
+            <li class="tp-box" th:each="video:${videoList}">
+                <div class="video-item" th:attr="video-id=${video.id}">
+                    <div><img th:src="${video.cover}" th:alt="${video.name}"></div>
+                    <p class="video-title" th:text="${video.name}"></p>
+                    <div>
+                        <span><span class="bi bi-play-circle" title="观看次数" th:text="${video.see}"></span></span>
+                        <span><span class="bi bi-download" title="下载次数" th:text="${video.download}"></span></span>
+                        <span><span class="bi bi-chat" title="评论">0</span></span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- 这里是留言列表 -->
+    <div class="tp-box">
+        <div class="tp-box tp-under-br">
+            <span>留言</span>
+            <a href="#" class="tp-float-right">
+                <span>查看更多</span>
+                <span>
+							<span>共</span>
+							<span style="color: red;">66</span>
+							<span>条留言</span>
+						</span>
+            </a>
+        </div>
+        <ul class="tp-list tp-divide2">
+            <li class="tp-box">
+                <div class="message">
+                    <div class="message-icon">
+                        <img src="images/head/fish.png" alt="">
+                    </div>
+                    <div class="message-content">
+                        <h4 class="message-title">这里是留言的标题</h4>
+                        <div class="message-text">
+                            这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容
+                        </div>
+                    </div>
+                </div>
+            </li><li class="tp-box">
+            <div class="message">
+                <div class="message-icon">
+                    <img src="images/head/leaf.png" alt="">
+                </div>
+                <div class="message-content">
+                    <h4 class="message-title">这里是留言的标题</h4>
+                    <div class="message-text">
+                        这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容
+                    </div>
+                </div>
+            </div>
+        </li><li class="tp-box">
+            <div class="message">
+                <div class="message-icon">
+                    <img src="images/head/panda.png" alt="">
+                </div>
+                <div class="message-content">
+                    <h4 class="message-title">这里是留言的标题</h4>
+                    <div class="message-text">
+                        这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容
+                    </div>
+                </div>
+            </div>
+        </li><li class="tp-box">
+            <div class="message">
+                <div class="message-icon">
+                    <img src="images/head/plant.png" alt="">
+                </div>
+                <div class="message-content">
+                    <h4 class="message-title">这里是留言的标题</h4>
+                    <div class="message-text">
+                        这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容这里是留言内容
+                    </div>
+                </div>
+            </div>
+        </li>
+        </ul>
+    </div>
+</section>
+<footer class="tp-width-1340">
+    <div class="tp-box tp-text-center">
+        <a href="https://beian.miit.gov.cn/">黔ICP备20000654号-1</a>
+    </div>
+</footer>
 </body>
 </html>

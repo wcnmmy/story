@@ -1,0 +1,28 @@
+<div class="tp-box">
+    <form action="http://localhost:9090/tp/image" method="post" class="tp-form" target="nm_iframe">
+        <table>
+            <tr>
+                <td><span class="tp-label">图片名称</span></td>
+                <td>
+                    <input class="tp-input-text" type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <td><span class="tp-label">请选择一张图片</span></td>
+                <td>
+                    <input type="file" class="tp-input-text">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="tp-control">
+                        <button type="reset" class="tp-button">清　空</button>
+                        <button type="submit" class="tp-button">添　加</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <!-- iframe为跳转不提交,如果有数据需要提交的话就把这Iframe标签移除就可以 -->
+    <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
+</div>

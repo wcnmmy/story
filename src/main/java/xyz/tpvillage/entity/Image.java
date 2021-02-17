@@ -2,6 +2,9 @@ package xyz.tpvillage.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import cn.hutool.core.util.IdUtil;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -32,11 +35,6 @@ public class Image implements Serializable {
       private String name;
 
       /**
-     * 图片地址
-     */
-      private String url;
-
-      /**
      * 图片宽度
      */
       private Integer width;
@@ -54,6 +52,7 @@ public class Image implements Serializable {
       /**
      * 图片创建时间
      */
+      @TableField("`create`")
       private LocalDateTime create;
 
       /**
@@ -71,5 +70,22 @@ public class Image implements Serializable {
      */
       private Integer download;
 
+  /**
+   * 初始化
+   * @return
+   */
+  public static Image initialize(){
+        Image image = new Image();
+        image.setId(IdUtil.simpleUUID());
+        image.setCreate(LocalDateTime.now());
+        image.setDownload(0);
+        image.setSee(0);
+        image.setName(null);
+        image.setHeight(0);
+        image.setWidth(0);
+        image.setType(null);
+        image.setSize(0L);
+        return image;
+      }
 
 }

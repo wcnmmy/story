@@ -1,10 +1,14 @@
 package xyz.tpvillage.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import xyz.tpvillage.entity.Story;
 import xyz.tpvillage.mapper.StoryMapper;
 import xyz.tpvillage.service.StoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +21,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class StoryServiceImpl extends ServiceImpl<StoryMapper, Story> implements StoryService {
 
+    @Override
+    public List<Story> selectPage(Integer current, Integer size) {
+        Page<Story> iPage = new Page<>(current,size);
+        List<Story> storyList = baseMapper.selectPage(iPage,null).getRecords();
+        System.out.println("storyList size = "+storyList.size());
+        return storyList;
+    }
 }

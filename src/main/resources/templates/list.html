@@ -11,11 +11,6 @@
 </head>
 <body>
 <p th:text="'List'">hello thymeleaf</p>
-<ul th:each="story:${storyList}">
-    <li>
-        <span th:text="${story.name}" style="background: red"></span>
-        <span th:text="${story.motto}"></span>
-    </li>
-</ul>
+<h1 th:text="${static}"></h1>
 </body>
 </html>

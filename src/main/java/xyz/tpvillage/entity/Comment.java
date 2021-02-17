@@ -46,5 +46,8 @@ public class Comment implements Serializable {
      */
       private LocalDateTime time;
 
-
+  /**
+   * 用于保存某张表某条数据的编号
+   */
+  private String target;
 }

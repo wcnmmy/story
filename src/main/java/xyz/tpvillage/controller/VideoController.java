@@ -1,9 +1,15 @@
 package xyz.tpvillage.controller;
 
-
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+import xyz.tpvillage.entity.form.VideoForm;
+import xyz.tpvillage.service.VideoService;
+
+import java.io.*;
 
 /**
  * <p>
@@ -15,7 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/video")
+@Slf4j
 public class VideoController {
+
+    @Autowired
+    VideoService videoService;
+
+    /**
+     * 添加视频信息
+     * @param videoForm
+     * @return
+     */
+    @PostMapping
+    public Object add(VideoForm videoForm) throws IOException {
+        return videoService.saveFromVideoForm(videoForm);
+    }
 
 }
 
