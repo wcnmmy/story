@@ -40,5 +40,9 @@ public class Message implements Serializable {
      */
       private Integer see;
 
+  /**
+   * 留言者
+   */
+  private String user;
 
 }
