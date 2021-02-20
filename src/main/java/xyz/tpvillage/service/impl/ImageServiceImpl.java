@@ -26,4 +26,9 @@ public class ImageServiceImpl extends ServiceImpl<ImageMapper, Image> implements
         IPage<Image> iPage = new Page<>(current,size);
         return baseMapper.selectPage(iPage,null).getRecords();
     }
+
+    @Override
+    public List<Image> listByStory(String storyId) {
+        return baseMapper.selectListByStory(storyId);
+    }
 }

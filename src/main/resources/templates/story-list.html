@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>故事列表</title>
-    <link rel="stylesheet" th:href="@{style/tpvillage.css}">
-    <link rel="stylesheet" th:href="@{style/story-item.css}">
+    <link rel="stylesheet" th:href="${static}+'style/tpvillage.css'">
+    <link rel="stylesheet" th:href="${static}+'style/story-item.css'">
 </head>
 <body>
 <header class="tp-nav">
@@ -35,7 +35,7 @@
 </header>
 <section class="tp-section tp-width-1340">
     <div class="tp-box">
-        <img th:src="@{images/theme-bg-story.jpg}" alt="">
+        <img th:src="${static}+'image/bg/theme-bg-story.jpg'" alt="">
     </div>
     <div class="tp-box">
         <div class="tp-box tp-text-center">
@@ -46,13 +46,13 @@
         </div>
         <ul class="tp-list tp-float-container tp-divide4">
             <li class="tp-box" th:each="story:${storyList}" th:attr="story-id=${story.id}">
-                <div class="story-item">
-                    <img th:src="'http://tpvillage.oss-cn-chengdu.aliyuncs.com/'+${story.icon}" alt="">
-                    <div>
+                <a th:href="${story.index}" class="story-item">
+                    <img th:src="${story.icon}" alt="">
+                    <div style="color: #666">
                         <div class="title" th:text="${story.name}"></div>
                         <div class="describe" th:text="${story.motto}"></div>
                     </div>
-                </div>
+                </a>
             </li>
         </ul>
     </div>

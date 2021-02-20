@@ -16,4 +16,11 @@ import java.util.List;
 public interface ImageService extends IService<Image> {
 
     List<Image> selectPage(Integer current, Integer size);
+
+    /**
+     * 通过故事编号查询相关故事信息
+     * @param storyId
+     * @return
+     */
+    List<Image> listByStory(String storyId);
 }

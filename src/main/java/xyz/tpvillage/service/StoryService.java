@@ -16,4 +16,11 @@ import java.util.List;
 public interface StoryService extends IService<Story> {
 
     List<Story> selectPage(Integer current, Integer size);
+
+    /**
+     * 通过故事的拼音查找一个故事信息
+     * @param pinyin
+     * @return
+     */
+    Story getByPinyin(String pinyin);
 }

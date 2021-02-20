@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>图片列表</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+		<link rel="stylesheet" th:href="${static}+'style/tpvillage.css'">
+		<link rel="stylesheet" th:href="${static}+'style/menu-item.css'">
+		<style>
+			.img-item{
+				position: relative;
+			}
+			.img-item:after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+			.img-item>*{
+				float: left;
+			}
+			.img-item img{
+				cursor: pointer;
+				border-radius: 5px;
+				background-color: #FF99CC;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="tp-nav">
+			<div class="tp-nav-logo">
+				<img src="images/menu/menu-5.png" alt="">
+				<span>图片列表</span>
+			</div>
+			<ul class="tp-nav-menu">
+				<li>
+					<img src="images/menu/menu-4.png" alt="">
+					<a href="/fore/story-list.html">其他故事</a>
+				</li>
+				<li>
+					<img src="images/menu/menu-2.png" alt="">
+					<a href="/fore/story-list.html">视频</a>
+				</li>
+				<li>
+					<img src="images/menu/menu-3.png" alt="">
+					<a href="/fore/story-list.html">照片</a>
+				</li>
+			</ul>
+			<ul class="tp-nav-menu" style="float: right;">
+				<li><a href="">定制主页</a></li>
+				<li><a href="">信息报错</a></li>
+				<li><a href="">问题反馈</a></li>
+			</ul>
+		</header>
+		<section class="tp-section tp-width-1340">
+			<div class="tp-box">
+				<img th:src="${static}+'image/bg/theme-bg-image.jpg'" alt="">
+			</div>
+			<div class="tp-box-row tp-divide4">
+				<div class="tp-box">
+					<div class="tp-box menu-item" style="background-color: #66CCCC;">
+						<a href="#">
+							<span class="bi bi-person-fill"></span>
+							<span>人物</span>
+						</a>
+					</div>
+				</div>
+				<div class="tp-box">
+					<div class="tp-box menu-item" style="background-color: #FF99CC;">
+						<a href="#">
+							<span class="bi bi-tree-fill"></span>
+							<span>景物</span>
+						</a>
+					</div>
+				</div>
+				<div class="tp-box">
+					<div class="tp-box menu-item" style="background-color: #99CC33;">
+						<a href="#">
+							<span class="bi bi-people-fill"></span>
+							<span>合影</span>
+						</a>
+					</div>
+				</div>
+				<div class="tp-box">
+					<div class="tp-box menu-item" style="background-color: #FF6600;">
+						<a href="#">
+							<span class="bi bi-grid"></span>
+							<span>其他</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="tp-box">
+				<div class="tp-box">
+					<h1 class="tp-under-br">图片列表</h1>
+				</div>
+				<div class="tp-box tp-text-center">
+					<div class="tp-box-search tp-green" style="width: 80%;">
+						<input type="text" class="tp-input-text">
+						<input type="submit" class="tp-button" value="筛选">
+					</div>
+				</div>
+				<ul class="tp-list tp-divide6">
+					<li class="tp-box" th:each="image:${imageList}">
+						<div class="img-item" th:attr="image-id=${image.id}">
+							<img th:src="'http://tpvillage.oss-cn-chengdu.aliyuncs.com/story/image-min/'+${image.name}">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<footer class="tp-width-1340">
+			<div class="tp-box tp-text-center">
+				<ul class="tp-list tp-divide5 tp-float-container">
+					<li class="tp-box">
+						<div class="websites">
+							<div><a href="#">tpvillage</a></div>
+							<div><a href="#">google</a></div>
+							<div><a href="#">baidu</a></div>
+							<div><a href="#">github</a></div>
+							<div><a href="#">fkw</a></div>
+						</div>
+					</li>
+					<li class="tp-box">
+						<div class="websites">
+							<div><a href="#">java</a></div>
+							<div><a href="#">c++</a></div>
+							<div><a href="#">html</a></div>
+							<div><a href="#">css</a></div>
+							<div><a href="#">javascript</a></div>
+						</div>
+					</li>
+					<li class="tp-box">
+						<div class="websites">
+							<div><a href="#">springboot</a></div>
+							<div><a href="#">bootstrap</a></div>
+							<div><a href="#">mybatis</a></div>
+							<div><a href="#">velocity</a></div>
+							<div><a href="#">jquery</a></div>
+						</div>
+					</li>
+					<li class="tp-box">
+						<div class="websites">
+							<div><a href="#">nginx</a></div>
+							<div><a href="#">tomcat</a></div>
+							<div><a href="#">OSS</a></div>
+							<div><a href="#">ECS</a></div>
+							<div><a href="#">mysql</a></div>
+						</div>
+					</li>
+					<li class="tp-box">
+						<div class="websites">
+							<div><a href="#">Visual Studio</a></div>
+							<div><a href="#">Intellij IDEA</a></div>
+							<div><a href="#">Navicat</a></div>
+							<div><a href="#">chrome</a></div>
+							<div><a href="#">HBulider X</a></div>
+						</div>
+					</li>
+				</ul>
+				<a href="https://beian.miit.gov.cn/">黔ICP备20000654号-1</a>
+			</div>
+		</footer>
+	</body>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.0/jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+		});
+	</script>
+</html>

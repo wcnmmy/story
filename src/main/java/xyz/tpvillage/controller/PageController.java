@@ -1,6 +1,5 @@
 package xyz.tpvillage.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -8,12 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import xyz.tpvillage.entity.Image;
-import xyz.tpvillage.entity.Story;
-import xyz.tpvillage.entity.Video;
-import xyz.tpvillage.service.ImageService;
-import xyz.tpvillage.service.StoryService;
-import xyz.tpvillage.service.VideoService;
+import org.springframework.web.bind.annotation.PathVariable;
+import xyz.tpvillage.entity.*;
+import xyz.tpvillage.service.*;
 
 import java.util.List;
 
@@ -35,12 +31,46 @@ public class PageController {
     @Autowired
     VideoService videoService;
 
+    @Autowired
+    MessageService messageService;
+
+    @Autowired
+    StoryImageRelationService storyImageRelationService;
+
+    @ApiOperation(value = "故事详细页面")
+    @GetMapping("/story/{pinyin}")
+    public String story(@PathVariable String pinyin,Model model){
+
+        /**
+         * 根据拼音查出相关的故事信息
+         */
+        Story story = storyService.getByPinyin(pinyin);
+
+        /**
+         * 通过故事编号查询出相关的图片信息
+         */
+        List<Image> imageList = imageService.listByStory(story.getId());
+
+        model.addAttribute("story",story);
+        model.addAttribute("imageList",imageList);
+        return "story";
+    }
+
     @ApiOperation(value = "故事列表页面")
     @GetMapping("/story-list")
-    public String list(Model model){
+    public String storyList(Model model){
         List<Story> storyList = storyService.list();
         model.addAttribute("storyList",storyList);
         return "story-list";
+    }
+
+    @ApiOperation(value = "图片列表页面")
+    @GetMapping("/image-list")
+    public String imageList(Model model){
+        List<Image> imageList = imageService.selectPage(1,36);
+
+        model.addAttribute("imageList",imageList);
+        return "image-list";
     }
 
     @ApiOperation(value = "故事模板首页")
@@ -52,10 +82,14 @@ public class PageController {
         List<Story> storyList = storyService.selectPage(1,8);
         List<Image> imageList = imageService.selectPage(1,12);
         List<Video> videoList = videoService.selectPage(1,4);
+        List<Message> messageList = messageService.selectPage(1,4);
+        log.info("message = {}",messageList.get(0));
 
         model.addAttribute("storyList",storyList);
         model.addAttribute("imageList",imageList);
         model.addAttribute("videoList",videoList);
+        model.addAttribute("messageList",messageList);
+        model.addAttribute("message",messageList.get(0));
         return "index";
     }
 

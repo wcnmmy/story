@@ -18,7 +18,7 @@ spring:
       max-request-size: 2GB
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
-  type-aliases-package: com.tpvillage.story.entity
+  type-aliases-package: xyz.tpvillage.entity
   logging:
     level:
       xyz.tpvillage.mapper: debug
