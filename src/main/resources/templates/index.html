@@ -17,6 +17,11 @@
         .tp-form .tp-input-text{
             width: 400px;
         }
+        .tp-nav-menu a{
+            display: inline-block;
+            height: 55px;
+            line-height: 55px;
+        }
     </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script th:src="${static}+'js/index.js'"></script>
@@ -30,23 +35,23 @@
     <ul class="tp-nav-menu">
         <li>
             <a href="story-list" title="故事列表">
-                <span class="bi bi-grid-3x3-gap-fill"></span>
-                <span>故事</span>
+                <span class="bi bi-grid-3x3-gap-fill">故事</span>
             </a>
         </li>
         <li>
             <a href="image-list">
-                <span class="bi bi-image-fill"></span>
-                <span>图片</span>
+                <span class="bi bi-image-fill">图片</span>
             </a>
         </li>
         <li>
-            <span class="bi bi-play-circle-fill"></span>
-            <span>视频</span>
+            <a href="video-list">
+                <span class="bi bi-play-circle-fill">视频</span>
+            </a>
         </li>
         <li>
-            <span class="bi bi-chat-square-text-fill"></span>
-            <span>留言</span>
+            <a href="message-list">
+                <span class="bi bi-chat-square-text-fill">留言</span>
+            </a>
         </li>
     </ul>
     <ul class="tp-nav-menu tp-float-right">
@@ -161,7 +166,7 @@
     <div class="tp-box">
         <div class="tp-box tp-under-br">
             <span>视频</span>
-            <a href="#" class="tp-float-right">
+            <a href="video-list" class="tp-float-right">
                 <span>查看更多</span>
             </a>
         </div>
@@ -183,7 +188,7 @@
     <div class="tp-box">
         <div class="tp-box tp-under-br">
             <span>留言</span>
-            <a href="#" class="tp-float-right">
+            <a href="message-list" class="tp-float-right">
                 <span>查看更多</span>
             </a>
         </div>

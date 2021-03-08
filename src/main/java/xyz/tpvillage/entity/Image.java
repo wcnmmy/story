@@ -70,6 +70,17 @@ public class Image implements Serializable {
      */
       private Integer download;
 
+    /**
+     * 图片url
+     */
+    private String url;
+
+    /**
+     * 图片缩略图url
+     */
+    private String icon;
+
+
   /**
    * 初始化
    * @return

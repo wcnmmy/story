@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>消息列表</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" th:href="${static}+'style/tpvillage.css'">
+    <link rel="stylesheet" th:href="${static}+'style/message-item.css'">
+</head>
+<body>
+<header class="tp-nav">
+    <div class="tp-nav-logo">
+        <img th:src="${static}+'image/icon/dinosaur.png'" alt="logo" title="logo">
+        <span>梦想三十七号</span>
+    </div>
+    <ul class="tp-nav-menu">
+        <li>
+            <a href="story-list" title="故事列表">
+                <span class="bi bi-grid-3x3-gap-fill">故事</span>
+            </a>
+        </li>
+        <li>
+            <a href="image-list">
+                <span class="bi bi-image-fill">图片</span>
+            </a>
+        </li>
+        <li>
+            <a href="video-list">
+                <span class="bi bi-play-circle-fill">视频</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="bi bi-chat-square-text-fill">留言</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="tp-nav-menu tp-float-right">
+        <li>
+            <span>登录</span>
+        </li>
+    </ul>
+</header>
+<section class="tp-section tp-width-1340">
+    <div class="tp-box to-bg-image">
+        <img th:src="${static}+'image/bg/theme-bg-message.jpg'" alt="" class="tp-block">
+    </div>
+    <div class="tp-box">
+        <div class="tp-box tp-under-br">
+            <span>留言</span>
+            <a href="#" class="tp-float-right">
+                <span>查看更多</span>
+            </a>
+        </div>
+        <ul class="tp-list tp-divide2">
+            <li class="tp-box" th:each="message:${messageList}">
+                <div class="message" th:attr="message-id=${message.id}">
+                    <div class="message-icon">
+                        <img src="images/head/fish.png" alt="">
+                    </div>
+                    <div class="message-content">
+                        <h4 class="message-title" th:text="${message.title}">关于本模块</h4>
+                        <div class="message-text" th:text="${message.content}"> </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<footer class="tp-width-1340">
+    <div class="tp-box tp-text-center">
+        <a href="https://beian.miit.gov.cn/">黔ICP备20000654号-1</a>
+    </div>
+</footer>
+</body>
+</html>

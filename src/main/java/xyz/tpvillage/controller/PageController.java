@@ -73,6 +73,22 @@ public class PageController {
         return "image-list";
     }
 
+    @ApiOperation(value = "视频列表页面")
+    @GetMapping("/video-list")
+    public String videoList(Model model){
+        List<Video> videoList = videoService.selectPage(1,20);
+        model.addAttribute("videoList",videoList);
+        return "video-list";
+    }
+
+    @ApiOperation(value = "消息列表页面")
+    @GetMapping("/message-list")
+    public String messageList(Model model){
+        List<Message> messageList = messageService.selectPage(1,10);
+        model.addAttribute("messageList",messageList);
+        return "message-list";
+    }
+
     @ApiOperation(value = "故事模板首页")
     @GetMapping({"","/index"})
     public String index(Model model){
