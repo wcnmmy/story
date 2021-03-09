@@ -39,14 +39,16 @@
     </div>
     <div class="tp-box">
         <div class="tp-box tp-text-center">
-            <div class="tp-box-search tp-blue" style="width: 80%;">
-                <input type="text" class="tp-input-text">
-                <input type="submit" class="tp-button" value="筛选">
-            </div>
+            <form action="#" class="filter">
+                <div class="tp-box-search tp-blue" style="width: 80%;">
+                    <input type="text" class="tp-input-text" name="keyword">
+                    <input type="submit" class="tp-button" value="筛选">
+                </div>
+            </form>
         </div>
         <ul class="tp-list tp-float-container tp-divide4">
-            <li class="tp-box" th:each="story:${storyList}" th:attr="story-id=${story.id}">
-                <a th:href="${story.index}" class="story-item">
+            <li class="tp-box" th:each="story:${storyList}">
+                <a th:href="${story.index}" class="story-item" th:attr="story-id=${story.id}">
                     <img th:src="${story.icon}" alt="">
                     <div style="color: #666">
                         <div class="title" th:text="${story.name}"></div>
@@ -111,4 +113,5 @@
 </footer>
 </body>
 <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script th:src="${static}+'js/story-list.js'"></script>
 </html>

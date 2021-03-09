@@ -50,5 +50,10 @@ public class ImageController {
         service.save(image);
         return image;
     }
+
+    @GetMapping()
+    public Image getImage(String id){
+        return service.getById(id);
+    }
 }
 

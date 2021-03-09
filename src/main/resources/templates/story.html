@@ -11,6 +11,9 @@
         #story-info ul{margin:0;}
         #story-info li{height:40px;line-height:40px;}
         #story-info li .key{display:inline-block;min-width:100px;}
+        .tp-box-message{
+            text-align: center;
+        }
     </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 </head>
@@ -75,11 +78,27 @@
         </div>
         <ul class="tp-list tp-divide6">
             <li class="tp-box" th:each="image:${imageList}">
-                <a href="#" th:attr="image-id=${image.id}">
-                    <img th:src="'http://tpvillage.oss-cn-chengdu.aliyuncs.com/story/image-min/'+${image.name}">
+                <a href="#" class="image-item" th:attr="image-id=${image.id}">
+                    <img th:src="${image.icon}">
                 </a>
             </li>
         </ul>
+    </div>
+    <div class="tp-box-message">
+        <div class="tp-box" style="height: 80vh;width: 80vw;margin: 10vh auto;color: #333">
+            <div class="tp-title">
+                <span class="image-name"></span>
+                <span class="bi bi-x-circle tp-button close" style="position: absolute;top: 0;right: 0"></span>
+                <div style="height: 25px;position: absolute;top: 0;right: 35px;" class="img-info">
+                    <span class="date"></span>
+                    <span class="size" style="margin: 10px;"></span>
+                    <span class="length"></span>
+                </div>
+            </div>
+            <div style="margin-top: 0;background-color: #ccc;height: 100%;padding: 10px;box-sizing: border-box">
+                <img src="" alt="">
+            </div>
+        </div>
     </div>
 </section>
 <footer class="tp-width-1340">
@@ -87,5 +106,7 @@
         <a href="https://beian.miit.gov.cn/">黔ICP备20000654号-1</a>
     </div>
 </footer>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script th:src="${static}+'js/story.js'"></script>
 </body>
 </html>

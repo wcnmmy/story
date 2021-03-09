@@ -158,7 +158,7 @@
         </div>
         <ul class="tp-list tp-divide6">
             <li class="tp-box" th:each="image : ${imageList}" th:attr="image-id=${image.id}">
-                <img th:src="'http://tpvillage.oss-cn-chengdu.aliyuncs.com/story/image-min/'+${image.name}" th:alt="${image.name}">
+                <img th:src="${image.icon}" th:alt="${image.name}">
             </li>
         </ul>
     </div>

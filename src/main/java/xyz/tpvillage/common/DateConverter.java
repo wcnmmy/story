@@ -17,7 +17,6 @@ public class DateConverter implements Converter<String,Date> {
     private final String EMPTY_DATE_STRING = "0000-00-00 00:00:00";
     @Override
     public Date convert(String s) {
-        System.out.println("Hello s = "+s);
         Date date = null;
         if(EMPTY_DATE_STRING.equals(s)){
             return null;
