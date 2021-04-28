@@ -72,6 +72,12 @@
             <artifactId>hutool-all</artifactId>
             <version>4.6.6</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
         <!-- 视频取帧、获取视频时长 -->
         <!-- 这段 maven 依赖包含了完整的 javacv 功能 (非常多，依赖Jar就占大概有500MB)，由于这里只使用到了其中 ffmpeg 这块的特性，因此也可以像下面这样排除掉无关的部分 -->
         <dependency>

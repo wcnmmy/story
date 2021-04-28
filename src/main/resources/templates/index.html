@@ -172,15 +172,17 @@
         </div>
         <ul class="tp-list tp-divide4">
             <li class="tp-box" th:each="video:${videoList}">
-                <div class="video-item" th:attr="video-id=${video.id}">
-                    <div><img th:src="${video.cover}" th:alt="${video.name}"></div>
-                    <p class="video-title" th:text="${video.name}"></p>
-                    <div>
-                        <span><span class="bi bi-play-circle" title="观看次数" th:text="${video.see}"></span></span>
-                        <span><span class="bi bi-download" title="下载次数" th:text="${video.download}"></span></span>
-                        <span><span class="bi bi-chat" title="评论">0</span></span>
+                <a th:href="'/tp/video/'+${video.id}">
+                    <div class="video-item" th:attr="video-id=${video.id}">
+                        <div><img th:src="${video.cover}" th:alt="${video.name}"></div>
+                        <p class="video-title" th:text="${video.name}"></p>
+                        <div>
+                            <span><span class="bi bi-play-circle" title="观看次数" th:text="${video.see}"></span></span>
+                            <span><span class="bi bi-download" title="下载次数" th:text="${video.download}"></span></span>
+                            <span><span class="bi bi-chat" title="评论">0</span></span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </li>
         </ul>
     </div>

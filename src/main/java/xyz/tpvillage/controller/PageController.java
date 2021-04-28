@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import xyz.tpvillage.entity.*;
 import xyz.tpvillage.service.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -71,6 +72,21 @@ public class PageController {
 
         model.addAttribute("imageList",imageList);
         return "image-list";
+    }
+
+    @GetMapping("/video/{videoId}")
+    public String video(@PathVariable String videoId, Model model, HttpSession session){
+        if(!SessionController.TP_UUID.equals(session.getAttribute("TP_UUID"))){
+            return "40x/403";
+        }
+        List<Video> videoList = videoService.selectPage(1,20);
+        Video video = videoList.stream().filter(video1 -> {
+            return video1.getId().equals(videoId);
+        }).findFirst().get();
+        videoList.remove(video);
+        model.addAttribute("video",video);
+        model.addAttribute("videoList",videoList);
+        return "video";
     }
 
     @ApiOperation(value = "视频列表页面")
