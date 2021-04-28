@@ -23,7 +23,7 @@ public class WebMvcConfigurerAdapter implements WebMvcConfigurer {
     /**
      * 静态资源全局变量
      */
-    @Value("http://192.168.43.233/tpvillage/story/")
+    @Value("http://192.168.42.52/tpvillage/story/")
     private String staticPath;
 
     @Override
