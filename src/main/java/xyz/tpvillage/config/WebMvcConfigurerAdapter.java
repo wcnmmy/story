@@ -20,12 +20,6 @@ public class WebMvcConfigurerAdapter implements WebMvcConfigurer {
     @Autowired()
     ThymeleafViewResolver thymeleafViewResolver;
 
-    /**
-     * 静态资源全局变量
-     */
-    @Value("http://192.168.42.52/tpvillage/story/")
-    private String staticPath;
-
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry){
         /*
@@ -33,7 +27,7 @@ public class WebMvcConfigurerAdapter implements WebMvcConfigurer {
          */
         if (thymeleafViewResolver != null) {
             Map<String, Object> vars = new HashMap<>(1);
-            vars.put("static", staticPath);
+            vars.put("static", Path.STATIC);
             thymeleafViewResolver.setStaticVariables(vars);
         }
         WebMvcConfigurer.super.configureViewResolvers(registry);

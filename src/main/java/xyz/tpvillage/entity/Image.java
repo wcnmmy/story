@@ -80,6 +80,11 @@ public class Image implements Serializable {
      */
     private String icon;
 
+    /**
+     * 缩放图
+     */
+    private String scale;
+
 
   /**
    * 初始化

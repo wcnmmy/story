@@ -50,7 +50,7 @@
     </ul>
 </header>
 <section class="tp-section tp-width-1340">
-    <div class="tp-box"  id="story-info">
+    <div class="tp-box"  id="story-info" th:attr="story-id=${story.id}">
         <div class="story-picture tp-box-row tp-box-float">
             <img th:src="${story.icon}" style="width: 200px;height: 200px;" class="tp-float-left" alt="">
             <ul class="tp-float-left">
@@ -78,9 +78,9 @@
         </div>
         <ul class="tp-list tp-divide6">
             <li class="tp-box" th:each="image:${imageList}">
-                <a href="#" class="image-item" th:attr="image-id=${image.id}">
+                <div class="image-item" th:attr="image-id=${image.id}">
                     <img th:src="${image.icon}">
-                </a>
+                </div>
             </li>
         </ul>
     </div>

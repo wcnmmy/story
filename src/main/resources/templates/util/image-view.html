@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>图片查看器-移动端</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background-color: #000;
+            overflow: hidden;
+        }
+        .image-view-box-list{
+            width: 1500px;
+            position: relative;
+        }
+        .image-view-box{
+            display: inline-block;
+            background-color: #333;
+            vertical-align: top;
+            text-align: center;
+            overflow: hidden;
+        }
+        .image-view-box>img{
+            position: relative;
+            max-width: 90%;
+            max-height: 98px;
+            vertical-align: middle;
+        }
+    </style>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+        // point.end.x = e.originalEvent.changedTouches[0].pageX;
+        var index = 0;
+        var count = 0;
+        var width = 0;
+        var point={
+            start:{x:0,y:0},
+            end:{x:0,y:0}
+        }
+        var imageList;
+
+
+        function showImg(){
+            var id = imageList[index];
+            $.ajax({
+                url:"/tp/image/"+id,
+                method:"GET",
+                success:function(data){
+                    $(".image-view-box>img").attr("src",data.data.scale);
+                    $(".image-view-box>img").animate({"opacity":1},200,function(){});
+                    $(".index").text(parseInt(index)+1);
+                }
+            });
+        }
+        function beforeImg(){
+            if(index<=0){
+                console.log("这已经是第一张了");
+                return;
+            }
+            index--;
+            $(".image-view-box>img").animate({left:width+"px"},500,function(){
+                $(".image-view-box>img").css({
+                    "left":"0px",
+                    "opacity":0
+                }).attr("src","");
+                showImg();
+            });
+        }
+        function nextImg(){
+            if(index>=count-1){
+                console.log("这已经是最后一张了");
+                return;
+            }
+            index++;
+            $(".image-view-box>img").animate({left:-1*width+"px"},500,function(){
+                $(".image-view-box>img").css({
+                    "left":"0px",
+                    "opacity":0
+                }).attr("src","");
+                showImg();
+            });
+        }
+
+        function touchStart(e){
+            point.start.x = e.originalEvent.changedTouches[0].pageX;
+            point.start.y = e.originalEvent.changedTouches[0].pageY;
+        }
+        function touchEnd(e){
+            point.end.x = e.originalEvent.changedTouches[0].pageX;
+            point.end.y = e.originalEvent.changedTouches[0].pageY;
+            if(point.end.x-point.start.x>45){
+                // 向右滑动
+                beforeImg();
+            }
+            if(point.end.x-point.start.x<-45){
+                // 向左滑动
+                nextImg();
+            }
+        }
+
+        /**
+         * 加载数据
+         */
+        function initData(){
+            var url = $(".image-view-box").attr("data-url");
+            var method = $(".image-view-box").attr("method");
+            index = $(".image-view-box").attr("index");
+            $.ajax({
+                url:url,
+                method:method,
+                success:function(data){
+                    imageList = data.data;
+                    count = data.data.length;
+                    $(".count").text(count);
+                    showImg();
+                }
+            });
+        }
+
+        function documentReady(){
+            width = document.documentElement.clientWidth;
+            height = document.documentElement.clientHeight;
+            initData();
+
+            $(".image-view-box").css({
+                width:width+"px",
+                height:height+"px",
+                "line-height":height+"px"
+            });
+            $(".image-view-box>img").css({
+                "max-height":height*.9+"px"
+            })
+
+            $("body").on("touchstart",touchStart);
+            $("body").on("touchend",touchEnd);
+            $("body").on("touchmove",function(){return false;});
+        }
+        $(document).ready(documentReady);
+    </script>
+</head>
+<body>
+<div style="position: fixed;z-index: 999;top: 0;left: 0;text-align: center;width: 100%;">
+    <div style="color: white;padding: 10px">
+        <span class="index">0</span>
+        <span>/</span>
+        <span class="count">0</span>
+        <div style="float: right;">
+            <a href="javascript:history.back();" style="color: white;">退出</a>
+        </div>
+    </div>
+</div>
+<div class="image-view-box" mehtod="GET" th:attr="index=${index},data-url=${url}">
+    <img src="" alt="">
+</div>
+<div style="position: fixed;z-index: 999;bottom: 0;right: 0;padding: 10px;">
+    <a href="javascript:void(0)" style="color: #fff;">下载原图</a>
+    <a href="javascript:beforeImg()" style="color: white;">before</a>
+    <a href="javascript:nextImg()" style="color: white;">next</a>
+</div>
+</body>
+</html>

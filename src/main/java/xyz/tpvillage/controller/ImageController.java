@@ -16,7 +16,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -51,9 +53,30 @@ public class ImageController {
         return image;
     }
 
-    @GetMapping()
-    public Image getImage(String id){
+    @GetMapping("/{id}")
+    public Image getImage(@PathVariable String id){
         return service.getById(id);
+    }
+
+    /**
+     * 根据故事编号查询图片列表
+     * @param id
+     * @return
+     */
+    @GetMapping("/by-story/{id}")
+    public List<Image> getImageByStory(@PathVariable String id){
+        return service.listByStory(id);
+    };
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/id-by-story/{id}")
+    public List<String> getImageIdByStory(@PathVariable String id){
+        List<Image> images = service.listByStory(id);
+        return images.stream().map(Image::getId).collect(Collectors.toList());
     }
 }
 

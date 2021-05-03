@@ -38,6 +38,11 @@ public class Video implements Serializable {
   private String url;
 
   /**
+   * 360p的视频地址
+   */
+  private String url360p;
+
+  /**
   * 视频文件大小
   */
   private Long size;
