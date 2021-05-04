@@ -1,5 +1,6 @@
 package xyz.tpvillage.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import xyz.tpvillage.entity.Image;
@@ -25,6 +26,14 @@ public class ImageServiceImpl extends ServiceImpl<ImageMapper, Image> implements
     public List<Image> selectPage(Integer current, Integer size) {
         IPage<Image> iPage = new Page<>(current,size);
         return baseMapper.selectPage(iPage,null).getRecords();
+    }
+
+    @Override
+    public List<Image> selectPageByType(Integer current, Integer size, String typeId) {
+        IPage<Image> iPage = new Page<>(current,size);
+        QueryWrapper<Image> wrapper = new QueryWrapper<>();
+        wrapper.eq("type",typeId);
+        return baseMapper.selectPage(iPage,wrapper).getRecords();
     }
 
     @Override

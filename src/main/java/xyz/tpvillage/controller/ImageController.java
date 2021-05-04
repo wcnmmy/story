@@ -1,9 +1,5 @@
 package xyz.tpvillage.controller;
 
-
-import cn.hutool.core.util.IdUtil;
-import com.aliyun.oss.OSS;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,12 +9,7 @@ import xyz.tpvillage.service.ImageService;
 import xyz.tpvillage.util.OSSUtil;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -28,7 +19,6 @@ import java.util.stream.Collectors;
  * @author mybatis-plus-generator
  * @since 2021-01-28
  */
-@Api(tags = "图片信息Controller")
 @RestController
 @RequestMapping("/image")
 public class ImageController {
@@ -58,25 +48,38 @@ public class ImageController {
         return service.getById(id);
     }
 
+
+    /**
+     * 分页查询图片信息
+     * @param current
+     * @param size
+     * @return
+     */
+    @GetMapping("")
+    public List<Image> getImages(Integer current,Integer size){
+        return this.service.selectPage(current, size);
+    }
+
     /**
      * 根据故事编号查询图片列表
      * @param id
      * @return
      */
     @GetMapping("/by-story/{id}")
-    public List<Image> getImageByStory(@PathVariable String id){
+    public List<Image> getImagesByStory(@PathVariable String id){
         return service.listByStory(id);
     };
 
     /**
-     *
-     * @param id
+     * 根据类型分页查询
+     * @param current
+     * @param size
+     * @param typeId
      * @return
      */
-    @GetMapping("/id-by-story/{id}")
-    public List<String> getImageIdByStory(@PathVariable String id){
-        List<Image> images = service.listByStory(id);
-        return images.stream().map(Image::getId).collect(Collectors.toList());
+    @GetMapping("/by-type")
+    public List<Image> getImagesByType(Integer current,Integer size,String typeId){
+        return service.selectPageByType(current, size, typeId);
     }
 }
 

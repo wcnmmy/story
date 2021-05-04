@@ -1,10 +1,9 @@
-package xyz.tpvillage.controller;
+package xyz.tpvillage.controller.page;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -26,9 +25,6 @@ public class UtilPageController {
      */
     @GetMapping("/image-view")
     public String imageView(Integer index, String url, Model model){
-        log.info("index = "+index);
-        log.info("url = "+url);
-
         model.addAttribute("index",index);
         model.addAttribute("url",url);
         return "util/image-view";

@@ -1,0 +1,24 @@
+server:
+  port: 2021
+  servlet:
+    context-path: /tp
+spring:
+  datasource:
+    # 添加zeroDateTimeBehavior=convertToNull 目的是让数据库中的zeroDate(形如0000-00-00 00:00:00)自动转换为null
+    url: jdbc:mysql://tpvillage.xyz:3306/tpvillage?characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      username: root
+      password: this is my password
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 2GB
+      max-request-size: 2GB
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: xyz.tpvillage.entity
+logging:
+  file:
+    name: log/story.log

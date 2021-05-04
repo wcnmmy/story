@@ -15,7 +15,22 @@ import java.util.List;
  */
 public interface ImageService extends IService<Image> {
 
+    /**
+     * 分页查询图片列表
+     * @param current
+     * @param size
+     * @return
+     */
     List<Image> selectPage(Integer current, Integer size);
+
+    /**
+     * 根据图片类型分页查询图片列表
+     * @param current
+     * @param size
+     * @param typeId
+     * @return
+     */
+    List<Image> selectPageByType(Integer current,Integer size,String typeId);
 
     /**
      * 通过故事编号查询相关故事信息

@@ -1,7 +1,5 @@
-package xyz.tpvillage.controller;
+package xyz.tpvillage.controller.page;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +16,6 @@ import java.util.List;
  * @author: 朱兴平
  * @date: 2021/1/24
  */
-@Api(tags = "Html页面控制器",value = "这个控制器只返回HTML页面")
 @Controller
 @Slf4j
 public class PageController {
@@ -38,7 +35,6 @@ public class PageController {
     @Autowired
     StoryImageRelationService storyImageRelationService;
 
-    @ApiOperation(value = "故事详细页面")
     @GetMapping("/story/{pinyin}")
     public String story(@PathVariable String pinyin,Model model){
 
@@ -57,7 +53,6 @@ public class PageController {
         return "story";
     }
 
-    @ApiOperation(value = "故事列表页面")
     @GetMapping("/story-list")
     public String storyList(Model model){
         List<Story> storyList = storyService.list();
@@ -65,18 +60,19 @@ public class PageController {
         return "story-list";
     }
 
-    @ApiOperation(value = "图片列表页面")
     @GetMapping("/image-list")
-    public String imageList(Model model){
-        List<Image> imageList = imageService.selectPage(1,36);
-
+    public String imageList(Integer current,Integer size,String typeId,Model model){
+        List<Image> imageList = imageService.selectPageByType(current,size,typeId);
+        model.addAttribute("current",current);
+        model.addAttribute("size",size);
+        model.addAttribute("typeId",typeId);
         model.addAttribute("imageList",imageList);
         return "image-list";
     }
 
     @GetMapping("/video/{videoId}")
     public String video(@PathVariable String videoId, Model model, HttpSession session){
-        if(!SessionController.TP_UUID.equals(session.getAttribute("TP_UUID"))){
+        if(!SessionController.TP_UUID.equals(session.getAttribute(SessionController.SESSION_NAME))){
             return "40x/403";
         }
         List<Video> videoList = videoService.selectPage(1,20);
@@ -89,15 +85,13 @@ public class PageController {
         return "video";
     }
 
-    @ApiOperation(value = "视频列表页面")
     @GetMapping("/video-list")
     public String videoList(Model model){
-        List<Video> videoList = videoService.selectPage(1,20);
+        List<Video> videoList = videoService.selectPage(1,40);
         model.addAttribute("videoList",videoList);
         return "video-list";
     }
 
-    @ApiOperation(value = "消息列表页面")
     @GetMapping("/message-list")
     public String messageList(Model model){
         List<Message> messageList = messageService.selectPage(1,10);
@@ -105,7 +99,6 @@ public class PageController {
         return "message-list";
     }
 
-    @ApiOperation(value = "故事模板首页")
     @GetMapping({"","/index"})
     public String index(Model model){
         /*

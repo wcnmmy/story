@@ -1,4 +1,4 @@
-package xyz.tpvillage.controller;
+package xyz.tpvillage.controller.page;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +21,13 @@ public class SessionController {
      */
     public static final String TP_UUID = "TP_VILLAGE";
 
+    public static final String SESSION_NAME = "TP_UUID";
+
     @PostMapping("/hello")
     public Object cookie(HttpServletRequest servletRequest, HttpSession session){
         String ip = IPUtils.getIpAddr(servletRequest);
         log.info("ip = "+ip);
-        session.setAttribute("TP_UUID",TP_UUID);
+        session.setAttribute(SESSION_NAME,TP_UUID);
         return "welcome to tp-village";
     }
 }

@@ -1,13 +1,13 @@
 package xyz.tpvillage.util;
 
-import org.bytedeco.javacv.FFmpegFrameGrabber;
+/**import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.FrameGrabber;
 import org.bytedeco.javacv.Java2DFrameConverter;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImage;*/
 import java.io.*;
 
 /**
@@ -25,14 +25,16 @@ public class VideoUtil {
      */
     public static long getVideoDuration(InputStream inputStream) {
         long duration = 0L;
-        FFmpegFrameGrabber ff = new FFmpegFrameGrabber(inputStream);
+
+        /**
+         * FFmpegFrameGrabber ff = new FFmpegFrameGrabber(inputStream);
         try {
             ff.start();
             duration = ff.getLengthInTime() / (1000 * 1000);
             ff.stop();
         } catch (FrameGrabber.Exception e) {
             e.printStackTrace();
-        }
+        }*/
         return duration;
     }
 
@@ -44,7 +46,8 @@ public class VideoUtil {
      */
     public static InputStream getVideoPic(InputStream inputStream) {
         InputStream ret = null;
-        FFmpegFrameGrabber ff = new FFmpegFrameGrabber(inputStream);
+        /**
+         * FFmpegFrameGrabber ff = new FFmpegFrameGrabber(inputStream);
         try {
             ff.start();
             // 截取中间帧图片(具体依实际情况而定)
@@ -75,7 +78,7 @@ public class VideoUtil {
             ff.stop();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         return ret;
     }
 }

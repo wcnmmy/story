@@ -58,7 +58,7 @@
 			<div class="tp-box-row tp-divide4">
 				<div class="tp-box">
 					<div class="tp-box menu-item" style="background-color: #66CCCC;">
-						<a href="#">
+						<a href="?current=1&size=36&typeId=2">
 							<span class="bi bi-person-fill"></span>
 							<span>人物</span>
 						</a>
@@ -66,7 +66,7 @@
 				</div>
 				<div class="tp-box">
 					<div class="tp-box menu-item" style="background-color: #FF99CC;">
-						<a href="#">
+						<a href="?current=1&size=36&typeId=1">
 							<span class="bi bi-tree-fill"></span>
 							<span>景物</span>
 						</a>
@@ -74,7 +74,7 @@
 				</div>
 				<div class="tp-box">
 					<div class="tp-box menu-item" style="background-color: #99CC33;">
-						<a href="#">
+						<a href="?current=1&size=36&typeId=3">
 							<span class="bi bi-people-fill"></span>
 							<span>合影</span>
 						</a>
@@ -82,7 +82,7 @@
 				</div>
 				<div class="tp-box">
 					<div class="tp-box menu-item" style="background-color: #FF6600;">
-						<a href="#">
+						<a href="?current=1&size=36&typeId=4">
 							<span class="bi bi-grid"></span>
 							<span>其他</span>
 						</a>
@@ -99,13 +99,17 @@
 						<input type="submit" class="tp-button" value="筛选">
 					</div>
 				</div>
-				<ul class="tp-list tp-divide6">
+				<ul class="tp-list tp-divide6" id="image-list" th:attr="current=${current},size=${size},typeId=${typeId}">
 					<li class="tp-box" th:each="image:${imageList}">
 						<div class="img-item" th:attr="image-id=${image.id}">
 							<img th:src="${image.icon}">
 						</div>
 					</li>
 				</ul>
+				<div class="tp-box">
+					<a href="#">上一页</a>
+					<a href="#">下一页</a>
+				</div>
 			</div>
 		</section>
 		<footer class="tp-width-1340">

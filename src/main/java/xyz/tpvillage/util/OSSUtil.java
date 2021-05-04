@@ -40,7 +40,21 @@ public class OSSUtil {
         // 创建OSSClient实例
         OSS ossClient = new OSSClientBuilder().build(ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         PutObjectResult putObjectResult = ossClient.putObject(BUCKET_NAME,objectName,inputStream);
+        ossClient.shutdown();
         return putObjectResult;
+    }
+
+    /**
+     * 判断OSS中是否存在指定对象
+     * @param objectName 对象名称
+     * @return
+     */
+    public static Boolean exist(String objectName){
+        // 创建OSSClient实例
+        OSS ossClient = new OSSClientBuilder().build(ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET);
+        Boolean result = ossClient.doesObjectExist(BUCKET_NAME,objectName);
+        ossClient.shutdown();
+        return result;
     }
 
 }

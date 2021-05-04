@@ -54,8 +54,8 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
          * 获取封面信息并上传志OSS服务
          */
         String coverUrl = "story/video/cover/"+originalFilename.substring(0,originalFilename.lastIndexOf('.'))+".jpg";
-        InputStream coverFileInputStream = VideoUtil.getVideoPic(multipartFile.getInputStream());
-        OSSUtil.upload(coverUrl,coverFileInputStream);
+        /*InputStream coverFileInputStream = VideoUtil.getVideoPic(multipartFile.getInputStream());
+        OSSUtil.upload(coverUrl,coverFileInputStream);*/
 
         /**
          * 关闭输入流

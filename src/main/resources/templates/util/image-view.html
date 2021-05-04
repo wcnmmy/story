@@ -51,16 +51,10 @@
 
 
         function showImg(){
-            var id = imageList[index];
-            $.ajax({
-                url:"/tp/image/"+id,
-                method:"GET",
-                success:function(data){
-                    $(".image-view-box>img").attr("src",data.data.scale);
-                    $(".image-view-box>img").animate({"opacity":1},200,function(){});
-                    $(".index").text(parseInt(index)+1);
-                }
-            });
+            var image = imageList[index];
+            $(".image-view-box>img").attr("src",image.scale);
+            $(".image-view-box>img").animate({"opacity":1},200,function(){});
+            $(".index").text(parseInt(index)+1);
         }
         function beforeImg(){
             if(index<=0){

@@ -20,11 +20,11 @@ public final class Path {
     /**
      * 静态资源路径
      */
-    final static String STATIC = "http://192.168.42.37/tpvillage/story/";
+    final static String STATIC = "http://192.168.42.63/tpvillage/story/";
 
     /**
      * OSS服务器的根路径
      */
-    final static String OSS_ROOT = "";
+    final static String OSS_ROOT = "http://tpvillage.oss-cn-chengdu.aliyuncs.com/";
 
 }

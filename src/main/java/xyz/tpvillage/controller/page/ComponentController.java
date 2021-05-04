@@ -1,6 +1,5 @@
-package xyz.tpvillage.controller;
+package xyz.tpvillage.controller.page;
 
-import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping("/component")
-@Api(tags = "组件控制器",value = "这个页面只返回html代码片段")
 public class ComponentController {
 
     @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST},path = "/add-image")
