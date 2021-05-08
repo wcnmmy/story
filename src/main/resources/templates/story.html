@@ -16,6 +16,7 @@
         }
     </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script th:src="${root}+'environment.js'"></script>
 </head>
 <body>
 <header class="tp-nav">
@@ -25,22 +26,24 @@
     </div>
     <ul class="tp-nav-menu">
         <li>
-            <a href="story-list" title="故事列表">
-                <span class="bi bi-grid-3x3-gap-fill"></span>
-                <span>故事</span>
+            <a th:href="${root}+'story-list'" title="故事列表">
+                <span class="bi bi-grid-3x3-gap-fill">故事</span>
             </a>
         </li>
         <li>
-            <span class="bi bi-image-fill"></span>
-            <span>图片</span>
+            <a th:href="${root}+'image-list?current=1&size=36&typeId=4'">
+                <span class="bi bi-image-fill">图片</span>
+            </a>
         </li>
         <li>
-            <span class="bi bi-play-circle-fill"></span>
-            <span>视频</span>
+            <a th:href="${root}+'video-list'">
+                <span class="bi bi-play-circle-fill">视频</span>
+            </a>
         </li>
         <li>
-            <span class="bi bi-chat-square-text-fill"></span>
-            <span>留言</span>
+            <a th:href="${root}+'message-list'">
+                <span class="bi bi-chat-square-text-fill">留言</span>
+            </a>
         </li>
     </ul>
     <ul class="tp-nav-menu tp-float-right">

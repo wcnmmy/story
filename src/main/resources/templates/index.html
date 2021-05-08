@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>梦想三十七号</title>
-    <link rel="shortcut icon" type="favicon.ico" th:href="${static}+'image/icon/dinosaur.png'">
+    <link rel="shortcut icon" type="favicon.ico" th:href="${logo}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" th:href="${static}+'style/tpvillage.css'">
     <link rel="stylesheet" th:href="${static}+'style/story-item.css'">
@@ -25,31 +25,32 @@
     </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script th:src="${static}+'js/index.js'"></script>
+    <script th:src="${root}+'environment.js'"></script>
 </head>
 <body>
 <header class="tp-nav">
     <div class="tp-nav-logo">
-        <img th:src="${static}+'image/icon/dinosaur.png'" alt="logo" title="logo">
+        <img th:src="${logo}" alt="logo" title="logo">
         <span>梦想三十七号</span>
     </div>
     <ul class="tp-nav-menu">
         <li>
-            <a href="story-list" title="故事列表">
+            <a th:href="${root}+'story-list'" title="故事列表">
                 <span class="bi bi-grid-3x3-gap-fill">故事</span>
             </a>
         </li>
         <li>
-            <a href="image-list">
+            <a th:href="${root}+'image-list?current=1&size=36&typeId=4'">
                 <span class="bi bi-image-fill">图片</span>
             </a>
         </li>
         <li>
-            <a href="video-list">
+            <a th:href="${root}+'video-list'">
                 <span class="bi bi-play-circle-fill">视频</span>
             </a>
         </li>
         <li>
-            <a href="message-list">
+            <a th:href="${root}+'message-list'">
                 <span class="bi bi-chat-square-text-fill">留言</span>
             </a>
         </li>
@@ -62,22 +63,22 @@
 </header>
 <section class="tp-section tp-width-1340">
     <div class="tp-box to-bg-image">
-        <img th:src="${static}+'image/bg/theme-bg-story-index.jpg'" alt="" class="tp-block">
+        <img th:src="${static}+'images/bg/theme-bg-story-index.jpg'" alt="" class="tp-block">
     </div>
     <!-- 头部菜单栏 -->
     <div class="tp-box-row tp-divide3">
         <div class="tp-box">
             <div class="menu-item tp-divide4 red">
-                <a href="#" title="我们的故事">
+                <a th:href="${root}+'story-list'" title="我们的故事">
                     <span class="bi bi-grid-3x3-gap-fill"></span>
                     <span>故事</span>
-                </a><a href="#" title="图片">
+                </a><a th:href="${root}+'image-list?current=1&size=36&typeId=4'" title="图片">
                 <span class="bi bi-image-fill"></span>
                 <span>图片</span>
-            </a><a href="#" title="视频">
+            </a><a th:href="${root}+'video-list'" title="视频">
                 <span class="bi bi-play-circle-fill"></span>
                 <span>视频</span>
-            </a><a href="#" title="留言">
+            </a><a th:href="${root}+'message-list'" title="留言">
                 <span class="bi bi-chat-square-text-fill"></span>
                 <span>留言</span>
             </a>
@@ -132,7 +133,7 @@
     <div class="tp-box">
         <div class="tp-box tp-under-br">
             <span>我们的故事</span>
-            <a href="story-list" class="tp-float-right">
+            <a th:href="${root}+'story-list'" class="tp-float-right">
                 <span>查看更多</span>
             </a>
         </div>
@@ -152,7 +153,7 @@
     <div class="tp-box">
         <div class="tp-box tp-under-br">
             <span>图片</span>
-            <a href="image-list?current=1&size=36&typeId=4" class="tp-float-right">
+            <a th:href="${root}+'image-list?current=1&size=36&typeId=4'" class="tp-float-right">
                 <span>查看更多</span>
             </a>
         </div>
@@ -166,13 +167,13 @@
     <div class="tp-box">
         <div class="tp-box tp-under-br">
             <span>视频</span>
-            <a href="video-list" class="tp-float-right">
+            <a th:href="${root}+'video-list'" class="tp-float-right">
                 <span>查看更多</span>
             </a>
         </div>
         <ul class="tp-list tp-divide4">
             <li class="tp-box" th:each="video:${videoList}">
-                <a th:href="'/tp/video/'+${video.id}">
+                <a th:href="${root}+'video/'+${video.id}">
                     <div class="video-item" th:attr="video-id=${video.id}">
                         <div><img th:src="${video.cover}" th:alt="${video.name}"></div>
                         <p class="video-title" th:text="${video.name}"></p>
@@ -190,7 +191,7 @@
     <div class="tp-box">
         <div class="tp-box tp-under-br">
             <span>留言</span>
-            <a href="message-list" class="tp-float-right">
+            <a th:href="${root}+'message-list'" class="tp-float-right">
                 <span>查看更多</span>
             </a>
         </div>
@@ -198,7 +199,7 @@
             <li class="tp-box" th:each="message:${messageList}">
                 <div class="message" th:attr="message-id=${message.id}">
                     <div class="message-icon">
-                        <img src="images/head/fish.png" alt="">
+                        <img th:src="${static}+'images/icon/fish.png'" alt="">
                     </div>
                     <div class="message-content">
                         <h4 class="message-title" th:text="${message.title}">关于本模块</h4>

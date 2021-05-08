@@ -71,15 +71,16 @@ public class PageController {
     }
 
     @GetMapping("/video/{videoId}")
-    public String video(@PathVariable String videoId, Model model, HttpSession session){
+    public String video(@PathVariable String videoId, Model model,HttpSession session){
         if(!SessionController.TP_UUID.equals(session.getAttribute(SessionController.SESSION_NAME))){
             return "40x/403";
         }
-        List<Video> videoList = videoService.selectPage(1,20);
-        Video video = videoList.stream().filter(video1 -> {
-            return video1.getId().equals(videoId);
-        }).findFirst().get();
+        List<Video> videoList = videoService.selectPage(1,40);
+        Video video = videoList.stream().filter(video1 -> video1.getId().equals(videoId)).findFirst().get();
         videoList.remove(video);
+
+        video.setSee(video.getSee()+1);
+        videoService.updateById(video);
         model.addAttribute("video",video);
         model.addAttribute("videoList",videoList);
         return "video";

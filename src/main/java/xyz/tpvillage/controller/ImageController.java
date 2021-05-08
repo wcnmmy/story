@@ -1,5 +1,6 @@
 package xyz.tpvillage.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,11 +44,31 @@ public class ImageController {
         return image;
     }
 
+    /**
+     * 获取总记录数
+     * @return
+     */
+    @GetMapping("/count")
+    public Integer getImageCount(){
+        return service.count();
+    };
+
+    /**
+     * 根据图片编号获取总记录数
+     * @param typeId
+     * @return
+     */
+    @GetMapping("/count/{typeId}")
+    public Integer getImageCountByType(@PathVariable String typeId){
+        QueryWrapper<Image> wrapper = new QueryWrapper<>();
+        wrapper.eq("type",typeId);
+        return service.count(wrapper);
+    }
+
     @GetMapping("/{id}")
     public Image getImage(@PathVariable String id){
         return service.getById(id);
     }
-
 
     /**
      * 分页查询图片信息

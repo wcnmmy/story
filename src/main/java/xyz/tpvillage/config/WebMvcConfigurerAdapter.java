@@ -1,7 +1,6 @@
 package xyz.tpvillage.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -17,8 +16,11 @@ import java.util.Map;
 @Component
 public class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 
-    @Autowired()
+    @Autowired
     ThymeleafViewResolver thymeleafViewResolver;
+
+    @Autowired
+    TpvillageEnvironment environment;
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry){
@@ -27,7 +29,9 @@ public class WebMvcConfigurerAdapter implements WebMvcConfigurer {
          */
         if (thymeleafViewResolver != null) {
             Map<String, Object> vars = new HashMap<>(1);
-            vars.put("static", Path.STATIC);
+            vars.put("static", environment.getTP_STATIC());
+            vars.put("root", environment.getTP_ROOT());
+            vars.put("logo",environment.getTP_LOGO());
             thymeleafViewResolver.setStaticVariables(vars);
         }
         WebMvcConfigurer.super.configureViewResolvers(registry);

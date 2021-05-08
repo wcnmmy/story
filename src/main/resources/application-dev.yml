@@ -1,7 +1,7 @@
 server:
   port: 9090
   servlet:
-    context-path: /tp
+    context-path: /story
 spring:
   datasource:
     # 添加zeroDateTimeBehavior=convertToNull 目的是让数据库中的zeroDate(形如0000-00-00 00:00:00)自动转换为null
@@ -27,3 +27,8 @@ mybatis-plus:
 logging:
   file:
     name: log/story.log
+tpvillage:
+  TP_ROOT: http://localhost:9090/story/
+  TP_STATIC: https://tpvillage.oss-cn-chengdu.aliyuncs.com/story/static/
+  TP_OSS: https://tpvillage.oss-cn-chengdu.aliyuncs.com/
+  TP_LOGO: https://tpvillage.oss-cn-chengdu.aliyuncs.com/story/static/images/icon/dinosaur.png

@@ -4,48 +4,44 @@
 <head>
     <meta charset="utf-8">
     <title>故事列表</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" th:href="${static}+'style/tpvillage.css'">
     <link rel="stylesheet" th:href="${static}+'style/story-item.css'">
 </head>
 <body>
 <header class="tp-nav">
     <div class="tp-nav-logo">
-        <img src="images/menu/menu-5.png" alt="">
+        <img th:src="${logo}" alt="">
         <span>故事列表</span>
     </div>
     <ul class="tp-nav-menu">
         <li>
-            <img src="images/menu/menu-4.png" alt="">
-            <a href="/fore/story-list.html">其他故事</a>
+            <a th:href="${root}+'story-list'" title="故事列表">
+                <span class="bi bi-grid-3x3-gap-fill">故事</span>
+            </a>
         </li>
         <li>
-            <img src="images/menu/menu-2.png" alt="">
-            <a href="/fore/story-list.html">视频</a>
+            <a th:href="${root}+'image-list?current=1&size=36&typeId=4'">
+                <span class="bi bi-image-fill">图片</span>
+            </a>
         </li>
         <li>
-            <img src="images/menu/menu-3.png" alt="">
-            <a href="/fore/story-list.html">照片</a>
+            <a th:href="${root}+'video-list'">
+                <span class="bi bi-play-circle-fill">视频</span>
+            </a>
         </li>
-    </ul>
-    <ul class="tp-nav-menu" style="float: right;">
-        <li><a href="">定制主页</a></li>
-        <li><a href="">信息报错</a></li>
-        <li><a href="">问题反馈</a></li>
+        <li>
+            <a th:href="${root}+'message-list'">
+                <span class="bi bi-chat-square-text-fill">留言</span>
+            </a>
+        </li>
     </ul>
 </header>
 <section class="tp-section tp-width-1340">
     <div class="tp-box">
-        <img th:src="${static}+'image/bg/theme-bg-story.jpg'" alt="">
+        <img th:src="${static}+'images/bg/theme-bg-story.jpg'" alt="">
     </div>
     <div class="tp-box">
-        <div class="tp-box tp-text-center">
-            <form action="#" class="filter">
-                <div class="tp-box-search tp-blue" style="width: 80%;">
-                    <input type="text" class="tp-input-text" name="keyword">
-                    <input type="submit" class="tp-button" value="筛选">
-                </div>
-            </form>
-        </div>
         <ul class="tp-list tp-float-container tp-divide4">
             <li class="tp-box" th:each="story:${storyList}">
                 <a th:href="${story.index}" class="story-item" th:attr="story-id=${story.id}">
